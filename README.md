@@ -47,8 +47,13 @@ These are the important files:
 As mentioned above, msgbase_AI_chat.js can be run with Synchronet's jsexec utility or configured
 as a timed event in Synchronet's configuration tool (SCFG).  The command-line parameter
 -settingsFile can be used to specify the name of a settings file to use (without the .ini extension).
-For instance:
+For instance, from a command prompt:
 
 ```shell
 jsexec msgbase_AI_chat.js -settingsFile=mstbase_AI_chat
+```
+
+Or in Synchronet's timed events configuration:
+```s
+?msgbase_AI_chat.js -settingsFile=mstbase_AI_chat
 ```
