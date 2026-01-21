@@ -42,3 +42,13 @@ These are the important files:
 <li><b>conversationEndPhrases.txt</b>: A list of "end phrases" to look for to signify whether to start a new topic
 <li><b>topics.txt</b>: A list of topics to optinally use as conversation starters for new messages
 </ul>
+
+## Running the script
+As mentioned above, msgbase_AI_chat.js can be run with Synchronet's jsexec utility or configured
+as a timed event in Synchronet's configuration tool (SCFG).  The command-line parameter
+-settingsFile can be used to specify the name of a settings file to use (without the .ini extension).
+For instance:
+
+```shell
+jsexec msgbase_AI_chat.js -settingsFile=mstbase_AI_chat
+```
