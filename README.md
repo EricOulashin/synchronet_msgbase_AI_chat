@@ -9,8 +9,10 @@ computer.  These days, modern BBS software such as Synchronet runs online so tha
 connect via the internet (with protocols such as Telnet supporting the old-school text interface, but
 with other protocols as well such as SSH, RLogin, web (HTTP), newsgroup (NNTP), etc.).  You
 can read the following pages for more information:
-<a href='https://en.wikipedia.org/wiki/Bulletin_board_system' target='_blank'>Wikipedia article</a><br/>
-<a href='https://www.geeksforgeeks.org/computer-networks/what-is-bulletin-board-system/' target='_blank'>GeeksForGeeks article</a>
+<ul>
+<li><a href='https://en.wikipedia.org/wiki/Bulletin_board_system' target='_blank'>Wikipedia article</a>
+<li><a href='https://www.geeksforgeeks.org/computer-networks/what-is-bulletin-board-system/' target='_blank'>GeeksForGeeks article</a>
+</ul>
 
 Synchronet, like most other BBS software packages, provide message bases for people to post
 public messages in, and respond to other messages.  These are much like an online forum which
