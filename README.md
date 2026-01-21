@@ -54,6 +54,6 @@ jsexec msgbase_AI_chat.js -settingsFile=mstbase_AI_chat
 ```
 
 Or in Synchronet's timed events configuration:
-```s
+```
 ?msgbase_AI_chat.js -settingsFile=mstbase_AI_chat
 ```
