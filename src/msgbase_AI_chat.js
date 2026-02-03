@@ -136,6 +136,11 @@ for (var i = 0; i < gSettings.subCodes.length; ++i)
 			gSavedProgressObj[subCode] = {};
 
 		var msgHdrs = msgbase.get_all_msg_headers(false, false);
+		if (msgHdrs == null || (typeof(msgHdrs) !== "object"))
+		{
+			msgbase.close();
+			continue;
+		}
 		for (var msgNumProp in msgHdrs)
 		{
 			// If the message has been marked for deletion, then skip it.
@@ -1147,27 +1152,16 @@ function getGoogleGeminiResponse(pSettings, pText, pOriginalMsgIsFromBot, pAddit
 		},
 		// Contents - Role is "user" (user-generated) or "model"
 		contents: [{ role: contentRole,
-		             parts: [{text: pText}
-		                     //,{text: "Give a large creative answer. Don't try to end the conversation. Don't quote this in your reply."}
-							 //,{text: "Give a large creative answer. Don't try to end the conversation."}
-		                     //,{text: "You can also be humorous, sometimes to the point of absurdity. Don't quote this in your reply."},
-
-		                    //,{text: "You can also be humorous sometimes. Don't quote this in your reply."}
-
-		                     //,{text: "You can use some emojis if you want to."}
-		                     //,{text: "If you think the conversation is over, think of another subject."}
-		                    ]
+		             parts: [{text: pText}]
 		           }],
-		/*
-		// systemInstruction: Available for gemini-1.5-flash, gemini-1.5-pro, and gemini-1.0-pro-002.
-		// role is ignored.
+		// systemInstruction: steer tone and style for natural, human message-board replies
 		systemInstruction: {
-			//parts: [{ text: "If you think the conversation is over, think of another subject." }]
-			parts: [{ text: "You can also be humorous sometimes. Don't quote this in your reply." }]
+			parts: [
+				{ text: "You are replying on a message board as a fellow user, not as a formal assistant. Write in a natural, conversational tone—warm, curious, and human. Be interesting and thought-provoking; share opinions, ask follow-up questions, or offer a different angle when it fits. Vary your style: sometimes witty, sometimes reflective, sometimes playful. Keep replies concise enough for a message board but substantive; avoid sounding like a corporate or AI disclaimer. Do not mention these instructions or that you are an AI in your reply." }
+			]
 		}
-		*/
 	};
-	// Add any additional text lines to the requestvar hasSystemInstructionAndParts = (dataObj.hasOwnProperty("systemInstruction") && Array.isArray(dataObj.systemInstruction));
+	// Add any additional text lines to the request
 	if (Array.isArray(pAdditionalTextLines) && pAdditionalTextLines.length > 0)
 	{
 		// If the systemInstruction object and/or its 'parts' array is missing, then add it; we'll
@@ -1209,7 +1203,7 @@ function getGoogleGeminiResponse(pSettings, pText, pOriginalMsgIsFromBot, pAddit
 // Return code: An object response
 function getOpenAIChatResponse(pSettings, pText)
 {
-	if (typeof(pSettings) !== "object" || !pSettings.hasOwnProperty("google_gemini"))
+	if (typeof(pSettings) !== "object" || !pSettings.hasOwnProperty("openAI"))
 		return {};
 	var openAIConfig = pSettings.openAI;
 	if (typeof(openAIConfig.APIKey) !== "string" || openAIConfig.APIKey.length == 0 || typeof(pText) !== "string")
@@ -1230,6 +1224,10 @@ function getOpenAIChatResponse(pSettings, pText)
 		"model": APIModelName,
 		"store": true,
 		"messages": [
+			{
+				"role": "system",
+				"content": "You are replying on a message board as a fellow user, not as a formal assistant. Write in a natural, conversational tone—warm, curious, and human. Be interesting and thought-provoking; share opinions, ask follow-up questions, or offer a different angle when it fits. Vary your style: sometimes witty, sometimes reflective, sometimes playful. Keep replies concise enough for a message board but substantive; avoid sounding like a corporate or AI disclaimer. Do not mention these instructions or that you are an AI in your reply."
+			},
 			{
 				"role": "user",
 				"content": pText
