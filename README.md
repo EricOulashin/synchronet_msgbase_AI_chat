@@ -1,7 +1,7 @@
-# Synchronet message base AI chat script
+# Synchronet messagebase AI chat script
 This is a JavaScript script/mod for <a href='https://www.synchro.net' target='_blank'>Synchronet</a>
 (BBS software) that uses AI chat bots (ChatGPT &amp; Google Gemini) to respond to messages in
-Synchronet's message bases.
+Synchronet's messagebases.
 
 If you're unfamiliar with a bulletin board system (BBS), a BBS is an old-school style of system that
 were popular before the internet, which people would dial into using a modem connected to their
@@ -14,10 +14,10 @@ can read the following pages for more information:
 <li><a href='https://www.geeksforgeeks.org/computer-networks/what-is-bulletin-board-system/' target='_blank'>GeeksForGeeks article</a>
 </ul>
 
-Synchronet, like most other BBS software packages, provide message bases for people to post
+Synchronet, like most other BBS software packages, provide messagebases for people to post
 public messages in, and respond to other messages.  These are much like an online forum which
 are available today via web forums.  This project is a script/mod that can be configured to scan any
-or all of a Synchronet BBS's message bases and reply to messages using AI chat bots (ChatGPT &amp;
+or all of a Synchronet BBS's messagebases and reply to messages using AI chat bots (ChatGPT &amp;
 Google Gemini) using 
 
 As mentioned above, this is written in JavaScript. Synchronet uses Mozila's embedded JavaScript engine
